@@ -34,7 +34,7 @@ With `Codable` that usually means you have to write your own `init(from decoder:
 
 Well now in this very specific case, I don't anymore because I'm using this:
 
-```swift
+```swift !image!
 public enum SomeDecodable<T: Decodable>: Decodable {
 	case none, one(T), many([T])
 
