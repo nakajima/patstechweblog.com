@@ -59,17 +59,17 @@ Now, in our model, we can use it:
 
 ```swift
 struct BlogPost {
-  let author: SomeDecodable<String>
+	let author: SomeDecodable<String>
 }
 
 let post = try JSONDecoder().decode(BlogPost.self, from: json)
 switch post.author {
 case let .one(author):
-  print("The author is named \(author)")
+	print("The author is named \(author)")
 case let .many(authors):
-  print("The authors are named \(authors.joined(separator: ", "))")
+	print("The authors are named \(authors.joined(separator: ", "))")
 default:
-  print("I have no idea who the authors are")
+	print("I have no idea who the authors are")
 }
 ```
 

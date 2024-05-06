@@ -351,16 +351,16 @@ footer {
 <span class="comment">// SomeDecodable can have some Equatable, as a treat.</span>
 <span class="keyword">extension</span> <span class="type">SomeDecodable</span>: <span class="type">Equatable</span> <span class="keyword">where</span> <span class="type">T</span>: <span class="type">Equatable</span> { }
 </code></pre><p>Now, in our model, we can use it:</p><pre><code><span class="keyword">struct</span> BlogPost {
-  <span class="keyword">let</span> author: <span class="type">SomeDecodable</span>&lt;<span class="type">String</span>&gt;
+	<span class="keyword">let</span> author: <span class="type">SomeDecodable</span>&lt;<span class="type">String</span>&gt;
 }
 
 <span class="keyword">let</span> post = <span class="keyword">try</span> <span class="type">JSONDecoder</span>().<span class="call">decode</span>(<span class="type">BlogPost</span>.<span class="keyword">self</span>, from: json)
 <span class="keyword">switch</span> post.<span class="property">author</span> {
 <span class="keyword">case let</span> .<span class="call">one</span>(author):
-  <span class="call">print</span>(<span class="string">"The author is named</span> \(author)<span class="string">"</span>)
+	<span class="call">print</span>(<span class="string">"The author is named</span> \(author)<span class="string">"</span>)
 <span class="keyword">case let</span> .<span class="call">many</span>(authors):
-  <span class="call">print</span>(<span class="string">"The authors are named</span> \(authors.<span class="call">joined</span>(separator: <span class="string">"</span>, <span class="string">"</span>))<span class="string">"</span>)
+	<span class="call">print</span>(<span class="string">"The authors are named</span> \(authors.<span class="call">joined</span>(separator: <span class="string">"</span>, <span class="string">"</span>))<span class="string">"</span>)
 <span class="keyword">default</span>:
-  <span class="call">print</span>(<span class="string">"I have no idea who the authors are"</span>)
+	<span class="call">print</span>(<span class="string">"I have no idea who the authors are"</span>)
 }
 </code></pre><p>With <a href="https://www.swift.org/blog/pack-iteration/">parameter pack iteration</a> in Swift 6.0, we might be able to get rid of the enum and support more generic cases, but I haven’t figured out how to do it with Swift 5.10 yet.</p></article><footer><p>Posted <time datetime="2024-05-04T07:00:00Z">May 4, 2024</time> in <a href="/tag/codable" class="tag">codable</a><a href="/tag/json" class="tag">json</a><a href="/tag/good%20or%20bad%20idea%3F" class="tag">good or bad idea?</a><a href="/tag/swift" class="tag">swift</a></p><hr>Hi I’m Pat. This is my weblog. You can say hi on <a href="https://mastodon.social/@fancypat" rel="me">Mastodon</a>. I’m also on <a href="https://github.com/nakajima">GitHub</a>.</footer></main></body></html>
