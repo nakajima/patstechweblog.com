@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en" color-mode="user"><head><meta content="text/html" charset="UTF-8" http-equiv="Content-Type"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:title" content="`SomeDecodable`"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.patstechweblog.com/posts/1-some-decodable"/><meta property="og:site_name" content="Pat’s Tech Weblog"/><meta property="og:description" content="Sometimes you want to parse JSON that doesn’t really agree with Codable."/><meta property="article:author" content="Pat Nakajima"/><meta name="keywords" content="codable, json, good or bad idea?, swift"/><meta property="article:published_time" content="2024-05-04T07:00:00Z"/><title>`SomeDecodable`</title><meta name="twitter:title" content="`SomeDecodable`"/><meta property="og:title" content="`SomeDecodable`"/><link rel="stylesheet" href="https://unpkg.com/mvp.css"/><style>* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: 1rem;
+  background: #a5d3e50b;
+  box-shadow: 0px 0px 2px #2b21265a;
+  margin-bottom: 3rem;
+}
+
+hr {
+  margin: 0.5rem 0;
+  background: var(--color-accent);
+}
+
+article a {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+article {
+  font-size: 1.2rem;
+}
+
+article h1 code {
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin-top: 2rem 0;
+}
+
+h1 a,
+h1 a code {
+  text-decoration: none;
+  font-weight: bold !important;
+}
+
+h2 a {
+  text-decoration: none;
+  text-shadow: 0px 0px 4px #af447811;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+    Menlo, Consolas, monospace;
+  color: var(--color-table);
+  background: var(--color-bg-secondary);
+  padding: 0;
+  font-weight: normal;
+}
+
+article p {
+  margin: 2rem 0;
+}
+
+p code {
+  font-size: 1rem;
+}
+
+a code {
+  color: var(--color-link);
+  background: #00000000;
+  padding: 0 0.4rem;
+  margin-left: -0.4rem;
+}
+
+h1 code {
+  padding: 0 0.4rem;
+  margin-left: -0.4rem;
+  color: var(--color-text);
+  background: #00000000;
+}
+
+pre {
+  tab-size: 2;
+  box-shadow: var(--box-shadow);
+  background: var(--color-bg-secondary);
+  margin-left: -2rem;
+  padding-right: 3rem;
+  width: 100%;
+  max-width: 100% !important;
+  font-weight: bold;
+  overflow-x: scroll;
+}
+
+pre code {
+  padding: 0rem 2rem;
+  text-wrap: nowrap;
+  background: #00000000;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+header {
+  text-align: left;
+}
+
+header h1 {
+  line-height: 3rem;
+}
+
+footer,
+header,
+main {
+  padding: 0;
+}
+
+a.tag {
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--color-bg-secondary);
+  color: #0f0f10e6;
+  padding: 2px 4px;
+  box-shadow: 0px 0px 4px #af447811;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.post-row {
+  margin-bottom: 1rem;
+}
+
+.post-row h2 a {
+  display: inline-block;
+}
+
+.post-row p {
+  margin: 0;
+}
+
+.post-row time {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.posts-header-label {
+  margin-bottom: 0.5rem;
+}
+
+.site-name {
+  font-weight: bold;
+}
+
+footer {
+  color: var(--color-text-secondary);
+}
+
+:root[color-mode="user"] {
+  --active-brightness: 0.85;
+  --border-radius: 0;
+  --box-shadow: 0px 0px 2px #00000033;
+  --color-accent: #ece5f0;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #fafafa;
+  --color-link: #ff007b;
+  --color-secondary: #920de9;
+  --color-secondary-accent: #920de90b;
+  --color-shadow: #f4f4f4;
+  --color-table: #00c5d7;
+  --color-text: #000;
+  --color-text-secondary: #999;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --hover-brightness: 1.2;
+  --justify-important: center;
+  --justify-normal: left;
+  --line-height: 1.5;
+  --width-card: 285px;
+  --width-card-medium: 460px;
+  --width-card-wide: 800px;
+  --width-content: 1080px;
+}
+
+.keyword {
+  color: #ff007b;
+}
+
+.type {
+  color: #08c9c9;
+}
+
+.call {
+  color: #455570;
+}
+
+.string {
+  color: #f22e8d;
+}
+
+.number {
+  color: #ffc914;
+}
+
+.comment {
+  color: #999;
+}
+
+.property {
+  color: #1da8a8;
+}
+
+.dotAccess {
+  color: #43c4c4;
+}
+
+.preprocessing {
+  color: #f0a000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[color-mode="user"] {
+    --color-text: white;
+    --color-secondary: #cce0ff;
+    --color-bg: #010103;
+    --color-bg-secondary: #212129;
+    --color-accent: #303038;
+    --color-table: #00eaff;
+  }
+
+  .container {
+    background: #8fa7c81b;
+  }
+
+  a.tag {
+    color: var(--color-text);
+  }
+
+  .subdue a {
+    color: #fffcf9;
+  }
+
+  .keyword {
+    color: #ff007b;
+  }
+
+  .type {
+    color: #23e8e8;
+  }
+
+  .call {
+    color: #43bccd;
+  }
+
+  .string {
+    color: #ff3798;
+  }
+
+  .number {
+    color: #ffc914;
+  }
+
+  .comment {
+    color: #777;
+  }
+
+  .property {
+    color: #51f5f5;
+  }
+
+  .dotAccess {
+    color: #43c4c4;
+  }
+
+  .preprocessing {
+    color: #f0a000;
+  }
+}
+
+@media only screen and (min-width: 968px) {
+  h1 {
+    font-size: 4rem;
+    background: #00000000;
+    line-height: 4rem;
+    margin: 2rem 0;
+  }
+
+  header h1 code {
+    background: #00000000;
+  }
+
+  article {
+    max-width: 60vw;
+  }
+
+  .container {
+    max-width: 800px;
+  }
+
+  .post-row h2 {
+    font-size: 2rem;
+  }
+
+  pre {
+    padding: 0 3rem 0 1rem;
+    margin: 0 -2rem;
+  }
+
+  pre code {
+    padding: 1rem 1rem;
+  }
+}
+</style></head><body><main class="container"><h2 class="site-name"><a href="/">Pat’s Tech Weblog</a></h2><article><h1><code>SomeDecodable</code></h1><p>Sometimes you want to parse JSON that doesn’t really agree with Codable’s synthesized init. Like if a key wants to be a single thing <strong>or</strong> an array of that thing. What am I talking about? Ok let’s say you want to parse some JSON into this:</p><pre><code><span class="keyword">struct</span> BlogPost: <span class="type">Codable</span> {
+  <span class="keyword">let</span> author: <span class="type">String</span>
+}
+</code></pre><p>So the JSON you get can look like this:</p><pre><code>{
+  <span class="string">"author"</span>: <span class="string">"pat"</span>
+}
+</code></pre><p>But <em>TWIST</em>, sometimes it gives you this:</p><pre><code>{
+  <span class="string">"author"</span>: [<span class="string">"pat"</span>, <span class="string">"evil pat"</span>]
+}
+</code></pre><p>With <code>Codable</code> that usually means you have to write your own <code>init(from decoder: any Decoder)</code>. And for me that means I usually have to google how to do that again.</p><p>Well now in this very specific case, I don’t anymore because I’m using this:</p><pre><code><span class="keyword">public enum</span> SomeDecodable&lt;T: <span class="type">Decodable</span>&gt;: <span class="type">Decodable</span> {
+	<span class="keyword">case</span> none, <span class="call">one</span>(<span class="type">T</span>), <span class="call">many</span>([<span class="type">T</span>])
+
+	<span class="keyword">public init</span>(from decoder: <span class="keyword">any</span> <span class="type">Decoder</span>) <span class="keyword">throws</span> {
+		<span class="keyword">let</span> container = <span class="keyword">try</span>! decoder.<span class="call">singleValueContainer</span>()
+
+		<span class="keyword">if let</span> one = <span class="keyword">try</span>? container.<span class="call">decode</span>(<span class="type">T</span>.<span class="keyword">self</span>) {
+			<span class="keyword">self</span> = .<span class="call">one</span>(one)
+		} <span class="keyword">else if let</span> many = <span class="keyword">try</span>? container.<span class="call">decode</span>([<span class="type">T</span>].<span class="keyword">self</span>) {
+			<span class="keyword">self</span> = .<span class="call">many</span>(many)
+		} <span class="keyword">else</span> {
+			<span class="keyword">self</span> = .<span class="dotAccess">none</span>
+		}
+	}
+}
+
+<span class="comment">// SomeDecodable can have some Equatable, as a treat.</span>
+<span class="keyword">extension</span> <span class="type">SomeDecodable</span>: <span class="type">Equatable</span> <span class="keyword">where</span> <span class="type">T</span>: <span class="type">Equatable</span> { }
+</code></pre><p>Now, in our model, we can use it:</p><pre><code><span class="keyword">struct</span> BlogPost {
+  <span class="keyword">let</span> author: <span class="type">SomeDecodable</span>&lt;<span class="type">String</span>&gt;
+}
+
+<span class="keyword">let</span> post = <span class="keyword">try</span> <span class="type">JSONDecoder</span>().<span class="call">decode</span>(<span class="type">BlogPost</span>.<span class="keyword">self</span>, from: json)
+<span class="keyword">switch</span> post.<span class="property">author</span> {
+<span class="keyword">case let</span> .<span class="call">one</span>(author):
+  <span class="call">print</span>(<span class="string">"The author is named</span> \(author)<span class="string">"</span>)
+<span class="keyword">case let</span> .<span class="call">many</span>(authors):
+  <span class="call">print</span>(<span class="string">"The authors are named</span> \(authors.<span class="call">joined</span>(separator: <span class="string">"</span>, <span class="string">"</span>))<span class="string">"</span>)
+<span class="keyword">default</span>:
+  <span class="call">print</span>(<span class="string">"I have no idea who the authors are"</span>)
+}
+</code></pre><p>With <a href="https://www.swift.org/blog/pack-iteration/">parameter pack iteration</a> in Swift 6.0, we might be able to get rid of the enum and support more generic cases, but I haven’t figured out how to do it with Swift 5.10 yet.</p></article><footer><p>Posted<time datetime="2024-05-04T07:00:00Z">May 4, 2024</time> in <a href="/tag/codable" class="tag">codable</a><a href="/tag/json" class="tag">json</a><a href="/tag/good%20or%20bad%20idea%3F" class="tag">good or bad idea?</a><a href="/tag/swift" class="tag">swift</a></p><hr>Hi I’m Pat. This is my weblog. You can say hi on <a href="https://mastodon.social/@fancypat">Mastodon</a>. I’m also on <a href="https://github.com/nakajima">GitHub</a>.</footer></main></body></html>

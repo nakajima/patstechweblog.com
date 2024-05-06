@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="en" color-mode="user"><head><meta content="text/html" charset="UTF-8" http-equiv="Content-Type"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Pat’s Tech Weblog</title><meta name="twitter:title" content="Pat’s Tech Weblog"/><meta property="og:title" content="Pat’s Tech Weblog"/><link rel="stylesheet" href="https://unpkg.com/mvp.css"/><style>* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: 1rem;
+  background: #a5d3e50b;
+  box-shadow: 0px 0px 2px #2b21265a;
+  margin-bottom: 3rem;
+}
+
+hr {
+  margin: 0.5rem 0;
+  background: var(--color-accent);
+}
+
+article a {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+article {
+  font-size: 1.2rem;
+}
+
+article h1 code {
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin-top: 2rem 0;
+}
+
+h1 a,
+h1 a code {
+  text-decoration: none;
+  font-weight: bold !important;
+}
+
+h2 a {
+  text-decoration: none;
+  text-shadow: 0px 0px 4px #af447811;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
+    Menlo, Consolas, monospace;
+  color: var(--color-table);
+  background: var(--color-bg-secondary);
+  padding: 0;
+  font-weight: normal;
+}
+
+article p {
+  margin: 2rem 0;
+}
+
+p code {
+  font-size: 1rem;
+}
+
+a code {
+  color: var(--color-link);
+  background: #00000000;
+  padding: 0 0.4rem;
+  margin-left: -0.4rem;
+}
+
+h1 code {
+  padding: 0 0.4rem;
+  margin-left: -0.4rem;
+  color: var(--color-text);
+  background: #00000000;
+}
+
+pre {
+  tab-size: 2;
+  box-shadow: var(--box-shadow);
+  background: var(--color-bg-secondary);
+  margin-left: -2rem;
+  padding-right: 3rem;
+  width: 100%;
+  max-width: 100% !important;
+  font-weight: bold;
+  overflow-x: scroll;
+}
+
+pre code {
+  padding: 0rem 2rem;
+  text-wrap: nowrap;
+  background: #00000000;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+header {
+  text-align: left;
+}
+
+header h1 {
+  line-height: 3rem;
+}
+
+footer,
+header,
+main {
+  padding: 0;
+}
+
+a.tag {
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--color-bg-secondary);
+  color: #0f0f10e6;
+  padding: 2px 4px;
+  box-shadow: 0px 0px 4px #af447811;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.post-row {
+  margin-bottom: 1rem;
+}
+
+.post-row h2 a {
+  display: inline-block;
+}
+
+.post-row p {
+  margin: 0;
+}
+
+.post-row time {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.posts-header-label {
+  margin-bottom: 0.5rem;
+}
+
+.site-name {
+  font-weight: bold;
+}
+
+footer {
+  color: var(--color-text-secondary);
+}
+
+:root[color-mode="user"] {
+  --active-brightness: 0.85;
+  --border-radius: 0;
+  --box-shadow: 0px 0px 2px #00000033;
+  --color-accent: #ece5f0;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #fafafa;
+  --color-link: #ff007b;
+  --color-secondary: #920de9;
+  --color-secondary-accent: #920de90b;
+  --color-shadow: #f4f4f4;
+  --color-table: #00c5d7;
+  --color-text: #000;
+  --color-text-secondary: #999;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --hover-brightness: 1.2;
+  --justify-important: center;
+  --justify-normal: left;
+  --line-height: 1.5;
+  --width-card: 285px;
+  --width-card-medium: 460px;
+  --width-card-wide: 800px;
+  --width-content: 1080px;
+}
+
+.keyword {
+  color: #ff007b;
+}
+
+.type {
+  color: #08c9c9;
+}
+
+.call {
+  color: #455570;
+}
+
+.string {
+  color: #f22e8d;
+}
+
+.number {
+  color: #ffc914;
+}
+
+.comment {
+  color: #999;
+}
+
+.property {
+  color: #1da8a8;
+}
+
+.dotAccess {
+  color: #43c4c4;
+}
+
+.preprocessing {
+  color: #f0a000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[color-mode="user"] {
+    --color-text: white;
+    --color-secondary: #cce0ff;
+    --color-bg: #010103;
+    --color-bg-secondary: #212129;
+    --color-accent: #303038;
+    --color-table: #00eaff;
+  }
+
+  .container {
+    background: #8fa7c81b;
+  }
+
+  a.tag {
+    color: var(--color-text);
+  }
+
+  .subdue a {
+    color: #fffcf9;
+  }
+
+  .keyword {
+    color: #ff007b;
+  }
+
+  .type {
+    color: #23e8e8;
+  }
+
+  .call {
+    color: #43bccd;
+  }
+
+  .string {
+    color: #ff3798;
+  }
+
+  .number {
+    color: #ffc914;
+  }
+
+  .comment {
+    color: #777;
+  }
+
+  .property {
+    color: #51f5f5;
+  }
+
+  .dotAccess {
+    color: #43c4c4;
+  }
+
+  .preprocessing {
+    color: #f0a000;
+  }
+}
+
+@media only screen and (min-width: 968px) {
+  h1 {
+    font-size: 4rem;
+    background: #00000000;
+    line-height: 4rem;
+    margin: 2rem 0;
+  }
+
+  header h1 code {
+    background: #00000000;
+  }
+
+  article {
+    max-width: 60vw;
+  }
+
+  .container {
+    max-width: 800px;
+  }
+
+  .post-row h2 {
+    font-size: 2rem;
+  }
+
+  pre {
+    padding: 0 3rem 0 1rem;
+    margin: 0 -2rem;
+  }
+
+  pre code {
+    padding: 1rem 1rem;
+  }
+}
+</style></head><body><main class="container"><h1 class="subdue"><a href="/">Pat’s Tech Weblog</a></h1><div class="posts"><hr><article class="post-row"><h2><a href="/posts/1-some-decodable"><code>SomeDecodable</code></a></h2><p>Sometimes you want to parse JSON that doesn’t really agree with Codable.</p><time>May 4, 2024</time></article><hr><article class="post-row"><h2><a href="/posts/0-git-commit--m-first"><code>git commit -m first</code></a></h2><time>May 3, 2024</time></article><hr></div><footer>Hi I’m Pat. This is my weblog. You can say hi on <a href="https://mastodon.social/@fancypat">Mastodon</a>. I’m also on <a href="https://github.com/nakajima">GitHub</a>.</footer></main></body></html>
