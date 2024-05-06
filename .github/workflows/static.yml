@@ -41,7 +41,7 @@ jobs:
           fileName: "ohno.zip"
           extract: true
       - name: run ohno
-        run: ./ohno build
+        run: chmod +x ./ohno && ./ohno build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
