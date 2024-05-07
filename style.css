@@ -264,7 +264,7 @@ footer {
 }
 
 .preprocessing {
-  color: #f0a000;
+  color: #f19c79;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -318,7 +318,7 @@ footer {
   }
 
   .preprocessing {
-    color: #f0a000;
+    color: #f19c79;
   }
 }
 
