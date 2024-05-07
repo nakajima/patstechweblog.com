@@ -1,3 +1,5 @@
+@import url(https://unpkg.com/mvp.css);
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,6 +15,14 @@
 hr {
   margin: 0.5rem 0;
   background: var(--color-accent);
+}
+
+h1 a {
+  font-weight: 100;
+}
+
+a {
+  font-weight: normal;
 }
 
 article a {
@@ -36,6 +46,23 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  font-weight: bold;
+}
+
+h2 a code,
+h3 a code,
+h4 a code,
+h5 a code,
+h6 a code {
+  font-weight: normal;
+}
+
 article h2,
 article h3,
 article h4,
@@ -47,7 +74,7 @@ article h6 {
 h1 a,
 h1 a code {
   text-decoration: none;
-  font-weight: bold !important;
+  color: var(--color-text);
 }
 
 h2 a {
@@ -57,7 +84,6 @@ h2 a {
 
 h1 {
   font-size: 2rem;
-  font-weight: bold;
   line-height: 2rem;
   margin: 1rem 0;
 }
@@ -132,8 +158,10 @@ a.tag {
   display: inline-block;
   background-color: var(--color-bg-secondary);
   color: #0f0f10e6;
-  padding: 2px 4px;
+  padding: 2px 0.5rem;
   box-shadow: 0px 0px 4px #af447811;
+  margin-right: 0.5rem;
+  border-radius: 4px;
 }
 
 a:hover {
@@ -162,7 +190,15 @@ a:hover {
 }
 
 .site-name {
-  font-weight: bold;
+  font-weight: normal;
+}
+
+/* Utility */
+
+.subdue {
+  /* filter: brightness(85%); */
+  filter: saturate(40%);
+  opacity: 0.7;
 }
 
 footer {
@@ -249,10 +285,6 @@ footer {
     color: var(--color-text);
   }
 
-  .subdue a {
-    color: #fffcf9;
-  }
-
   .keyword {
     color: #ff007b;
   }
@@ -294,8 +326,7 @@ footer {
   h1 {
     font-size: 4rem;
     background: #00000000;
-    line-height: 4rem;
-    margin: 2rem 0;
+    margin: 3rem 0;
   }
 
   header h1 code {
