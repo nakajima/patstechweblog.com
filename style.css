@@ -204,7 +204,8 @@ a:hover {
 }
 
 footer {
-  color: var(--color-text-secondary);
+  margin-top: 1rem;
+  font-size: 0.8rem;
 }
 
 :root[color-mode="user"] {
