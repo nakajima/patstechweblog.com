@@ -6,8 +6,8 @@
 }
 
 .container {
-  padding: 1rem;
-  background: #a5d3e50b;
+  padding: 1rem 3rem;
+  background: var(--color-bg-secondary);
   box-shadow: 0px 0px 2px #2b21265a;
   margin-bottom: 3rem;
 }
@@ -53,6 +53,7 @@ h4 code,
 h5 code,
 h6 code {
   font-weight: bold;
+  background: #00000000;
 }
 
 h2 a code,
@@ -213,15 +214,15 @@ footer {
   --border-radius: 0;
   --box-shadow: 0px 0px 2px #00000033;
   --color-accent: #ece5f0;
-  --color-bg: #ffffff;
-  --color-bg-secondary: #fafafa;
-  --color-link: #ff007b;
+  --color-bg: #add7d70f;
+  --color-bg-secondary: #fff;
+  --color-link: #e6006f;
   --color-secondary: #920de9;
   --color-secondary-accent: #920de90b;
   --color-shadow: #f4f4f4;
-  --color-table: #00c5d7;
+  --color-table: #1a8089;
   --color-text: #000;
-  --color-text-secondary: #999;
+  --color-text-secondary: #757575;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --hover-brightness: 1.2;
@@ -234,12 +235,33 @@ footer {
   --width-content: 1080px;
 }
 
+@media (prefers-contrast: more) {
+  :root[color-mode="user"] {
+    --active-brightness: 0.85;
+    --border-radius: 0;
+    --box-shadow: 0px 0px 2px #00000033;
+    --color-accent: #ece5f0;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #fafafa;
+    --color-link: #e7006f;
+    --color-secondary: #920de9;
+    --color-secondary-accent: #920de90b;
+    --color-shadow: #f4f4f4;
+    --color-table: #368187;
+    --color-text: #000;
+  }
+
+  code {
+    font-weight: bold;
+  }
+}
+
 .keyword {
-  color: #ff007b;
+  color: #e6006f;
 }
 
 .type {
-  color: #08c9c9;
+  color: #038282;
 }
 
 .call {
@@ -247,23 +269,23 @@ footer {
 }
 
 .string {
-  color: #f22e8d;
+  color: #dd257e;
 }
 
 .number {
-  color: #ffc914;
+  color: #937100;
 }
 
 .comment {
-  color: #999999;
+  color: #757575;
 }
 
 .property {
-  color: #1da8a8;
+  color: #238282;
 }
 
 .dotAccess {
-  color: #43c4c4;
+  color: #0d8484;
 }
 
 .preprocessing {
@@ -273,9 +295,11 @@ footer {
 @media (prefers-color-scheme: dark) {
   :root[color-mode="user"] {
     --color-text: white;
+    --color-link: #ff007b;
     --color-secondary: #cce0ff;
     --color-bg: #010103;
-    --color-bg-secondary: #212129;
+    --color-bg-secondary: #19191e;
+    --color-text-secondary: #7d7d7d;
     --color-accent: #303038;
     --color-table: #00eaff;
   }
@@ -309,7 +333,7 @@ footer {
   }
 
   .comment {
-    color: #777777;
+    color: #848484;
   }
 
   .property {
@@ -349,8 +373,8 @@ footer {
   }
 
   pre {
-    padding: 0 3rem 0 1rem;
-    margin: 0 -2rem;
+    padding: 0 5rem 0 3rem;
+    margin: 0 -4rem;
   }
 
   pre code {
