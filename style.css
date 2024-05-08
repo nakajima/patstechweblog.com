@@ -103,6 +103,8 @@ article p {
 
 p code {
   font-size: 1rem;
+  font-weight: bold;
+  background: #00000000;
 }
 
 a code {
