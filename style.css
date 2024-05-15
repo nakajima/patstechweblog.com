@@ -285,6 +285,37 @@ footer hr {
   margin-bottom: 2rem;
 }
 
+.footnote {
+  display: flex;
+  flex-direction: row;
+}
+
+.footnote .footnote-number {
+  display: block;
+  width: 0.8rem;
+
+  text-align: right;
+  padding-right: 0.4rem;
+}
+
+.footnote p {
+  margin-top: 0;
+}
+
+.footnote br {
+  width: auto;
+}
+
+.footnote .back,
+.footnote .back small {
+  color: var(--color-secondary);
+}
+
+.footnote .back {
+  margin-top: var(--paragraph-spacing);
+  display: block;
+}
+
 :root[color-mode="user"] {
   --paragraph-spacing: 1.4rem;
   --active-brightness: 0.85;
@@ -434,33 +465,16 @@ footer hr {
     margin: 2.2rem 0;
   }
 
-  .footnote {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .footnote .footnote-number {
-    display: block;
-    width: 0.8rem;
-    margin-left: -1.2rem;
-    text-align: right;
-    padding-right: 0.4rem;
-  }
-
-  .footnote p {
-    margin-top: 0;
-  }
-
-  .footnote br {
-    width: auto;
-  }
-
   header h1 code {
     background: #00000000;
   }
 
   article {
     max-width: 800px;
+  }
+
+  .footnote .footnote-number {
+    margin-left: -1.2rem;
   }
 
   .container {
