@@ -1,8 +1,9 @@
 @import url(https://unpkg.com/mvp.css);
 
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  font-smooth: auto;
 }
 
 .container {
@@ -10,6 +11,17 @@
   background: var(--color-bg-secondary);
   box-shadow: 0px 0px 2px #2b21265a;
   margin-bottom: 3rem;
+}
+
+sup {
+  background: #00000000;
+  padding: 0;
+  font-weight: bold;
+}
+
+article sup a {
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 
 hr {
@@ -36,6 +48,10 @@ article {
 
 article h1 code {
   font-weight: bold;
+}
+
+small {
+  color: var(--color-text);
 }
 
 h2,
@@ -65,11 +81,22 @@ h6 a code {
 }
 
 article h2,
-article h3,
+article h3 {
+  margin: 1rem 0;
+}
+
+article p + h2,
+article p + h3,
+article p + h4,
+article p + h5,
+article p + h6 {
+  margin: 0 0 var(--paragraph-spacing) 0;
+}
+
 article h4,
 article h5,
 article h6 {
-  margin-top: 2rem 0;
+  margin: 0.5rem 0;
 }
 
 h1 a,
@@ -99,7 +126,7 @@ code {
 }
 
 article p {
-  margin: 2rem 0;
+  margin: var(--paragraph-spacing) 0;
 }
 
 p code {
@@ -171,8 +198,53 @@ a:hover {
   text-decoration: underline;
 }
 
+.post-body > p:first-of-type::first-letter,
+.section-break + p::first-letter {
+  margin: 0 0.4rem 0 0;
+  -webkit-initial-letter: 2;
+  initial-letter: 2;
+}
+
+.prologue {
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.footnote {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.footnote.current {
+  animation: highlight 2s;
+  animation-fill-mode: forwards;
+}
+
+#footnote-1 {
+  margin-top: var(--paragraph-spacing);
+}
+
+@keyframes highlight {
+  0% {
+    color: var(--color-text-secondary);
+  }
+
+  100% {
+    color: var(--color-text);
+  }
+}
+
+.footnote br {
+  margin-top: 0.6rem;
+  display: block;
+}
+
 .post-row {
   margin-bottom: 1rem;
+}
+
+.post-row h2 {
+  margin: 0;
 }
 
 .post-row h2 a {
@@ -209,7 +281,12 @@ footer {
   font-size: 1rem;
 }
 
+footer hr {
+  margin-bottom: 2rem;
+}
+
 :root[color-mode="user"] {
+  --paragraph-spacing: 1.4rem;
   --active-brightness: 0.85;
   --border-radius: 0;
   --box-shadow: 0px 0px 2px #00000033;
@@ -349,11 +426,33 @@ footer {
   }
 }
 
+/* Desktop styles */
 @media only screen and (min-width: 968px) {
   h1 {
     font-size: 4rem;
     background: #00000000;
-    margin: 3rem 0;
+    margin: 2.2rem 0;
+  }
+
+  .footnote {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .footnote .footnote-number {
+    display: block;
+    width: 0.8rem;
+    margin-left: -1.2rem;
+    text-align: right;
+    padding-right: 0.4rem;
+  }
+
+  .footnote p {
+    margin-top: 0;
+  }
+
+  .footnote br {
+    width: auto;
   }
 
   header h1 code {
