@@ -89,7 +89,7 @@ Our `ColumnWrapper`'s constraints would then be `["primaryKey"]`. Awesome. Excep
 
 ```swift
 init(from decoder: any Decoder) throws {
-	self.value = try decoder.singleValueContainer().decode(Value.self)
+	self.wrappedValue = try decoder.singleValueContainer().decode(Value.self)
 
 	// oh no we can't set constraints here.......
 }
@@ -101,7 +101,7 @@ So anyway, property wrappers were out. What next?
 
 ## `public macro Model() = ?`
 
-I wrote a `@Model` that takes a table name that represents where the model's records are stored in the DB[^3]. Then it grabs their properties and stores the following:
+I wrote a `@Model` macro that takes a table name that represents where the model's records are stored in the DB[^3]. Then it grabs their properties and stores the following:
 
 - The property's name
 - The property's Swift type (so we can try to figure out how it wants to be stored in the DB)
