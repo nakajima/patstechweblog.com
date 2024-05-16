@@ -1,5 +1,5 @@
 ---
-title: Swift Server Data
+title: Swift_Server_Data
 author: Pat Nakajima
 publishedAt: 05/15/2024
 excerpt: I mean why not?
