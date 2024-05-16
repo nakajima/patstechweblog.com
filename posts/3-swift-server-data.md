@@ -3,7 +3,7 @@ title: Swift Server Data
 author: Pat Nakajima
 publishedAt: 05/15/2024
 excerpt: I mean why not?
-tags:
+tags: swift, swift server, probably a bad idea
 ---
 
 <small><em>This is the first of what I'm sure will be a few posts detailing a fun lil thing I'm trying to do.</em></small>

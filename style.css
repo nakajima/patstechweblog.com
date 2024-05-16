@@ -1,4 +1,25 @@
-@import url(https://unpkg.com/mvp.css);
+@import url("https://use.typekit.net/rxm3zzg.css");
+@import url("https://unpkg.com/@csstools/normalize.css");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 * {
   /* -webkit-font-smoothing: antialiased;
@@ -25,6 +46,8 @@ article sup a {
 }
 
 hr {
+  height: 1px;
+  border: none;
   margin: 0.5rem 0;
   background: var(--color-accent);
 }
@@ -34,7 +57,15 @@ h1 a {
 }
 
 a {
-  font-weight: normal;
+  color: var(--color-link);
+}
+
+a:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+a:active {
+  filter: brightness(var(--active-brightness));
 }
 
 article a {
@@ -111,6 +142,8 @@ h2 a {
 }
 
 h1 {
+  font-family: "dejanire-text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 2rem;
   line-height: 2rem;
   margin: 1rem 0;
@@ -158,7 +191,7 @@ pre {
   width: 100%;
   max-width: 100% !important;
   font-weight: bold;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 pre code {
@@ -167,6 +200,8 @@ pre code {
   background: #00000000;
   color: var(--color-text);
   font-size: 1rem;
+  display: block;
+  max-width: var(--width-card-wide);
 }
 
 header {
@@ -196,6 +231,26 @@ a.tag {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+  border-radius: 10px;
 }
 
 .post-body > p:first-of-type::first-letter,
@@ -308,6 +363,11 @@ footer hr {
 
 .footnote .back,
 .footnote .back small {
+  color: var(--color-text-secondary);
+}
+
+.footnote.current .back,
+.footnote.current .back small {
   color: var(--color-secondary);
 }
 
@@ -341,6 +401,8 @@ footer hr {
   --width-card-medium: 460px;
   --width-card-wide: 800px;
   --width-content: 1080px;
+
+  font-family: var(--font-family);
 }
 
 @media (prefers-contrast: more) {
@@ -459,10 +521,15 @@ footer hr {
 
 /* Desktop styles */
 @media only screen and (min-width: 968px) {
+  main {
+    margin-left: 4rem;
+  }
+
   h1 {
     font-size: 4rem;
     background: #00000000;
     margin: 2.2rem 0;
+    line-height: 4.6rem;
   }
 
   header h1 code {
