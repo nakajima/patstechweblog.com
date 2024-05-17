@@ -5,6 +5,10 @@ html {
   scroll-behavior: smooth;
 }
 
+aside {
+  margin: 0;
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
@@ -150,8 +154,7 @@ h1 {
 }
 
 code {
-  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-    Menlo, Consolas, monospace;
+  font-family: var(--monofont);
   color: var(--color-table);
   background: var(--color-bg-secondary);
   padding: 0;
@@ -387,7 +390,139 @@ footer hr {
   display: block;
 }
 
+@keyframes collapse {
+  0% {
+    max-height: 1000px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    transform: rotate3d(0, 0, 0, 90deg);
+    /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+  }
+
+  100% {
+    max-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: rotate3d(2, 0, 0, 90deg);
+    /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+  }
+}
+
+@keyframes expand {
+  0% {
+    max-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: rotate3d(2, 0, 0, 90deg);
+    /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+  }
+
+  100% {
+    max-height: 1000px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    transform: rotate3d(0, 0, 0, 90deg);
+    /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+  }
+}
+
+.has-code-note {
+  background: #a7e2ff16;
+  color: var(--color-text);
+  position: relative;
+}
+
+.has-code-note:active {
+  filter: brightness(var(--active-brightness));
+}
+
+.code-note-content {
+  width: 100%;
+  white-space: normal;
+  font-family: var(--font-family);
+  padding-left: 0rem;
+  display: flex;
+}
+
+.code-note {
+  overflow-y: hidden;
+  max-height: 0;
+  margin-right: 0;
+  margin-top: -0.4rem;
+  padding: -0.2rem 0;
+  transform-origin: top;
+  position: relative;
+  background: #a7e2ff16;
+}
+
+.code-note.expanded {
+  animation-name: expand;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.code-note.collapsed {
+  animation-name: collapse;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.code-note-code {
+  cursor: pointer;
+}
+
+.code-note-button {
+  display: none;
+  color: var(--color-text);
+  cursor: pointer;
+  margin-left: 0.2rem;
+  font-family: var(--font-family);
+  background: var(--color-bg-secondary);
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  position: absolute;
+  z-index: 10;
+}
+
+.code-note-button::after {
+  content: " Comment";
+}
+
+.code-note-container {
+  z-index: 1;
+}
+
+.code-note-container:hover .code-note-button {
+  display: inline-block;
+}
+
+.code-note-container:hover .has-code-note {
+  background: #a7e2ff2f;
+}
+
+.code-note-button:active {
+  transform: scale(0.95);
+}
+
+.code-note-indentation {
+  font-family: var(--monofont);
+  white-space: break-spaces;
+  font-size: 1rem;
+  float: left;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.code-note p {
+  margin: calc(var(--paragraph-spacing) / 4) 0;
+}
+
 :root[color-mode="user"] {
+  --monofont: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono", Menlo,
+    Consolas, monospace;
   --paragraph-spacing: 1.4rem;
   --active-brightness: 0.85;
   --border-radius: 0;
@@ -562,6 +697,46 @@ footer hr {
 
   .post-row h2 {
     font-size: 2rem;
+  }
+
+  .code-note {
+    margin-top: -0.2rem;
+  }
+
+  @keyframes collapse {
+    from {
+      max-height: 1000px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      transform: rotate3d(0, 0, 0, 90deg);
+      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+    }
+
+    to {
+      max-height: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      transform: rotate3d(2, 0, 0, 90deg);
+      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+    }
+  }
+
+  @keyframes expand {
+    from {
+      max-height: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      transform: rotate3d(2, 0, 0, 90deg);
+      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+    }
+
+    to {
+      max-height: 1000px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      transform: rotate3d(0, 0, 0, 90deg);
+      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
+    }
   }
 
   pre {
