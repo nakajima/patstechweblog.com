@@ -709,7 +709,6 @@ footer hr {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       transform: rotate3d(0, 0, 0, 90deg);
-      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
     }
 
     to {
@@ -717,7 +716,6 @@ footer hr {
       margin-top: 0;
       margin-bottom: 0;
       transform: rotate3d(2, 0, 0, 90deg);
-      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
     }
   }
 
@@ -727,7 +725,6 @@ footer hr {
       margin-top: 0;
       margin-bottom: 0;
       transform: rotate3d(2, 0, 0, 90deg);
-      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
     }
 
     to {
@@ -735,7 +732,6 @@ footer hr {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       transform: rotate3d(0, 0, 0, 90deg);
-      /* transform: scaleX(0deg) scaleY(0deg) scaleZ(0deg); */
     }
   }
 
