@@ -6,7 +6,7 @@ excerpt: I mean why not?
 tags: swift, swift server, probably a bad idea
 ---
 
-<small><em>This is the first of what I'm sure will be a few posts detailing a fun lil thing I'm trying to do.</em></small>
+<small style="text-align: center; display: block;"><em>This is the first of what I'm sure will be a few posts detailing <a href="https://github.com/nakajima/ServerData.swift">a fun lil thing I'm trying to do</a>.</em></small>
 
 I was working on an iOS thing for fun and decided it probably wanted a server component. My first thought was oops. Then it was, "hmm what do I write this in?" I landed on Swift because I like Swift[^1]. I landed on MySQL because I know it.
 
