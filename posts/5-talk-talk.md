@@ -17,11 +17,29 @@ Anyways, you can [check it out here](https://talktalk.sh) or on [GitHub](https:/
 I kept a little diary while I was working on it, maybe it'll be interesting for anyone else making their own programming language. So here it is, unedited. Maybe it makes up for not postin' here.
 
 ---
-## 7/28/2024
 
-Closures workin' on LLVM. We're capturing stuff to the heap on func definition then passing that stuff an argument at call sites.
+## 7/6/2024
 
-## 7.19.2024
+Gonna try to write an AST parser, then generate LLVM IR. Doing the VM + Compiler using C semantics from swift wasn't working great.
+
+## 7/7/2024
+
+Nevermind, we got it working at least. Still like twice as slow as the C implementation.
+
+Right now properties are just string dict keys. Maybe see if storing as an Int hash value is faster? (eventually we want static types but for now `¯\_(ツ)_/¯`)
+
+## 7/8/2024
+
+Let’s add the ability to access the file system. Maybe sockets (TODO: learn what sockets actually are?)
+
+Also collection types lol
+## 7/10/2024
+
+Rewriting the parser to an AST so we can maybe add types?
+
+Should add some order of operations tests to make sure Pratt is workin
+
+## 7/19/2024
 
 LLVM JIT workin, what's next?
 
@@ -31,29 +49,11 @@ OK we're starting on an Abstract Binding Tree thing that will be responsible for
 
 # 7.11.2024
 
-Use semicolon for comment token? Could make stripping terminators easier plus discourage ending lines with the,
+Use semicolon for comment token? Could make stripping terminators easier plus discourage ending lines with the,  
 
-## 7.10.2024
+## 7/28/2024
 
-Rewriting the parser to an AST so we can maybe add types?
-
-Should add some order of operations tests to make sure Pratt is workin
-
-## 7.6.2024
-
-Gonna try to write an AST parser, then generate LLVM IR. Doing the VM + Compiler using C semantics from swift wasn't working great.
-
-## 7.7.2024
-
-Nevermind, we got it working at least. Still like twice as slow as the C implementation.
-
-Right now properties are just string dict keys. Maybe see if storing as an Int hash value is faster? (eventually we want static types but for now `¯\_(ツ)_/¯`)
-
-## 7.8.2024
-
-Let’s add the ability to access the file system. Maybe sockets (TODO: learn what sockets actually are?)
-
-Also collection types lol
+Closures workin' on LLVM. We're capturing stuff to the heap on func definition then passing that stuff an argument at call sites.
 
 ## 8/1/2024
 
@@ -171,6 +171,7 @@ Oh hell yes, CI is green. Good ol' build #28.
 Moved init/func decls up into decl() which means we can stop unwrapping ExprStmts in so many places. Phew.
 
 - [ ] One thing we need to do is consolidate errors. I think the overall goal should be to try to get as far as possible and just make sure our types can carry all error or warning info they might need as is appropriate for their stage. Also we should implement panic mode for the parser. Thank you for coming to my ted talk. 
+
 ## 8/14/2024
 
 GOOD MORNING what will we break today?
